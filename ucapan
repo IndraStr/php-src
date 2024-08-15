@@ -1,0 +1,15 @@
+<?php
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $nama = htmlspecialchars($_POST['nama']);
+    $pesan = htmlspecialchars($_POST['pesan']);
+
+    // Contoh menyimpan ke file
+    $file = fopen("ucapan.txt", "a");
+    fwrite($file, "Nama: $nama\nPesan: $pesan\n\n");
+    fclose($file);
+
+    // Redirect kembali ke halaman utama dengan pesan sukses
+    header("Location: index.html?status=sukses");
+    exit();
+}
+?>
